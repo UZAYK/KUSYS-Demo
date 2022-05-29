@@ -41,10 +41,10 @@ namespace KUSYSDemo.Business.Concrete
 
         public void Update(dynamic model, dynamic id)
         => _courseDal.Update(model, id);
-     //   public void Repository()
-     //=> _courseDal.Repository(_context);
+        public void Add(Course entity, dynamic id)
+        => _courseDal.Add(entity, id);
 
-     //   public IEnumerable<Course> Repository(KusysDemoContext ctx)
-     //   => _courseDal.Repository(_context);
+        public void Add(dynamic entity, dynamic id)
+        => _courseDal.Update(entity, id);
     }
 }

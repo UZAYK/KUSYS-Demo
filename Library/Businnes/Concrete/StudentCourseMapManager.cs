@@ -3,6 +3,7 @@ using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 using KUSYSDemo.DataAccess.Interfaces;
 using KUSYSDemo.Entities.Concrete;
 using KUSYSDemo.Models;
+using KUSYSDemo.Models.StudentCourseMap;
 using System.Linq.Expressions;
 
 namespace KUSYSDemo.Business.Concrete
@@ -24,6 +25,12 @@ namespace KUSYSDemo.Business.Concrete
         public void Add(StudentCourseMap entity)
         => _studentCourseMapDal.Add(entity);
 
+        //public void Add(StudentCourseMapAddModel entity, dynamic id)
+        //=> _studentCourseMapDal.Add(entity, id);
+
+        public void Add(StudentCourseMap entity, dynamic model)
+        => _studentCourseMapDal.Add(entity, model);
+
         public IEnumerable<StudentCourseMap> Find(Expression<Func<StudentCourseMap, bool>> expression)
         => _studentCourseMapDal.Find(expression);
 
@@ -39,6 +46,9 @@ namespace KUSYSDemo.Business.Concrete
         public void Update(StudentCourseMap entity)
         => _studentCourseMapDal.Update(entity);
 
+        public void Update(dynamic model, dynamic id)
+        => _studentCourseMapDal.Update(model, id);
+
         public IEnumerable<Student> GetStudentAll()
         => _studentCourseMapDal.GetStudentAll();
 
@@ -48,11 +58,10 @@ namespace KUSYSDemo.Business.Concrete
         public IEnumerable<StudentModel> GetMapAll()
          => _studentCourseMapDal.GetMapAll();
 
+        public StudentCourseMapListModel GetStudentAndCourseMap()
+        => _studentCourseMapDal.GetStudentAndCourseMap();
 
-        public void Update(dynamic model, dynamic id)
-        => _studentCourseMapDal.Update(model, id);
-
-        //public IEnumerable<StudentCourseMap> Repository(KusysDemoContext ctx)
-        //=> _studentCourseMapDal.Repository(_context);
+        public bool CourseValidation(int id, int courseId)
+        => _studentCourseMapDal.CourseValidation(id, courseId);
     }
 }

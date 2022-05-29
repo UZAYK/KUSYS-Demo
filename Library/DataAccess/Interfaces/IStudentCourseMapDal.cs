@@ -1,5 +1,6 @@
 ﻿using KUSYSDemo.Entities.Concrete;
 using KUSYSDemo.Models;
+using KUSYSDemo.Models.StudentCourseMap;
 using System.Linq.Expressions;
 
 namespace KUSYSDemo.DataAccess.Interfaces
@@ -9,7 +10,9 @@ namespace KUSYSDemo.DataAccess.Interfaces
         IEnumerable<Student> GetStudentAll();
         IEnumerable<Course> GetCourseAll();
         IEnumerable<StudentModel> GetMapAll();
+        StudentCourseMapListModel GetStudentAndCourseMap();
+        Boolean CourseValidation(int id, int courseId);
+
         //bool CourseValidation(Expression<Func<StudentCourseMap, bool>> expression);
-        //bool CourseValidation();
     }
 }

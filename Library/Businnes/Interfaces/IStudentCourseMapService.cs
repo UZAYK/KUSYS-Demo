@@ -1,5 +1,6 @@
 ﻿using KUSYSDemo.Entities.Concrete;
 using KUSYSDemo.Models;
+using KUSYSDemo.Models.StudentCourseMap;
 
 namespace KUSYSDemo.Business.Interfaces
 {
@@ -8,6 +9,9 @@ namespace KUSYSDemo.Business.Interfaces
         IEnumerable<Student> GetStudentAll();
         IEnumerable<Course> GetCourseAll();
         IEnumerable<StudentModel> GetMapAll();
+        StudentCourseMapListModel GetStudentAndCourseMap();
+
+        Boolean CourseValidation(int id, int courseId);
         //bool CourseValidation(int studentId, string courseId);
     }
 }

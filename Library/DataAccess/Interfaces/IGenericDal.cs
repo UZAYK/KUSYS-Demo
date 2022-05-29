@@ -5,15 +5,16 @@ using System.Linq.Expressions;
 
 namespace KUSYSDemo.DataAccess.Interfaces
 {
-    public interface IGenericDal<T> where T : class, IBaseEntity, new()
+    public interface IGenericDal<T> where T : class, new()
     {
         T GetById(int id);
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Expression<Func<T, bool>> expression);
         void Add(T entity);
+        void Add(T entity, dynamic model);
         void Remove(T entity);
         void Update(T entity);
-        void Update(dynamic model, dynamic id);
+        void Update(dynamic entity, dynamic id);
         //IEnumerable<T> Repository(KusysDemoContext ctx);
     }
 }

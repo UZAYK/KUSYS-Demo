@@ -5,6 +5,9 @@ namespace KUSYSDemo.Business.Interfaces
 {
     public interface IStudentService : IGenericService<Student>
     {
-        object Repository<T>(KusysDemoContext ctx);
+        //object Repository<T>(KusysDemoContext ctx);
+
+    
+
     }
 }

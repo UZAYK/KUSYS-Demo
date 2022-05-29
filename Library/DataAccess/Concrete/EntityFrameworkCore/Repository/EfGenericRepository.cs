@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
 {
-    public class EfGenericRepository<T> : IGenericDal<T> where T : class, IBaseEntity, new()
+    public class EfGenericRepository<T> : IGenericDal<T> where T : class, new()
     {
         #region constructor transactions (dependency incjection)
         private readonly KusysDemoContext _context;
@@ -22,6 +22,12 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
         public void Add(T entity)
         {
             _context.Set<T>().Add(entity);
+            _context.SaveChanges();
+        }
+        public void Add(T entity, dynamic model)
+        {
+            var map = _mapper.Map<T>(model);
+            _context.Set<T>().Add(map);
             _context.SaveChanges();
         }
 
@@ -40,20 +46,14 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
             _context.SaveChanges();
         }
 
-        //public IEnumerable<T> Repository(KusysDemoContext ctx)
-        //{
-        //    var context = ctx;
-        //    return context.Set<T>();
-        //}
-
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
             _context.SaveChanges();
         }
-        public void Update(dynamic model, dynamic id)
+        public void Update(dynamic entity, dynamic id)
         {
-            var map = _mapper.Map(model, id);
+            var map = _mapper.Map(entity, id);
             _context.Set<T>().Update(map);
             _context.SaveChanges();
         }

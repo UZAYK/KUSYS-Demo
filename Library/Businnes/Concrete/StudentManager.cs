@@ -40,14 +40,14 @@ namespace KUSYSDemo.Business.Concrete
         => _studentDal.Update(entity);
 
         public void Update(dynamic model, dynamic id)
-         => _studentDal.Update(model, id);
+        => _studentDal.Update(model, id);
 
-        //public IEnumerable<Student> Repository(KusysDemoContext ctx)
-        //=> _studentDal.Repository(_context);
+        public void Add(Student entity, dynamic id)
+        => _studentDal.Add(entity, id);
 
-        public object Repository<T>(KusysDemoContext ctx)
-        {
-            throw new NotImplementedException();
-        }
+
+        public void Add(dynamic entity, dynamic id)
+        => _studentDal.Add(entity, id);
+
     }
 }

@@ -17,6 +17,7 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context
         {
             modelBuilder.ApplyConfiguration(new CourseMap());
             modelBuilder.ApplyConfiguration(new StudentMap());
+            modelBuilder.ApplyConfiguration(new StudentCourseMaps());
 
             base.OnModelCreating(modelBuilder);
         }
