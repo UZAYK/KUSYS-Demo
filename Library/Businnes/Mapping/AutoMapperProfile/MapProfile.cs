@@ -29,14 +29,24 @@ namespace KUSYSDemo.Business.AutoMapperProfile
             CreateMap<StudentCourseMapAddModel, StudentCourseMap>();
             CreateMap<StudentCourseMap, StudentCourseMapAddModel>();
 
-            #endregion 
-            
+            #endregion
+
             #region StudentCourseListMap-StudentCourseMapModel
 
             CreateMap<StudentCourseMapListModel, StudentCourseMap>();
             CreateMap<StudentCourseMap, StudentCourseMapListModel>();
 
             #endregion
+
+            #region Student-StudentCourseMapModel
+
+           // CreateMap<StudentCourseMapAddModel, Student>();
+           // CreateMap<Student, StudentCourseMapAddModel>()
+           // .ForMember(o => o.CourseId, b => b.MapFrom(z => z.CourseId));
+           ////.ForMember(o => o.CourseId, b => b.MapFrom(user => (user.Id != null) ?
+           //// user.FirstName : "User" + user.Id.ToString));
+
+            #endregion 
         }
     }
 }

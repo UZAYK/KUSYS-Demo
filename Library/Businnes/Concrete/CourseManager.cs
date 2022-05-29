@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 
 using KUSYSDemo.Business.Interfaces;
+using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 using KUSYSDemo.DataAccess.Interfaces;
 using KUSYSDemo.Entities.Concrete;
 
@@ -10,9 +11,12 @@ namespace KUSYSDemo.Business.Concrete
     {
         #region ctor
         private readonly ICourseDal _courseDal;
-        public CourseManager(ICourseDal courseDal)
+        private readonly KusysDemoContext _context;
+
+        public CourseManager(ICourseDal courseDal, KusysDemoContext context)
         {
             _courseDal = courseDal;
+            _context = context;
         }
 
         #endregion
@@ -34,5 +38,13 @@ namespace KUSYSDemo.Business.Concrete
 
         public void Update(Course entity)
         => _courseDal.Update(entity);
+
+        public void Update(dynamic model, dynamic id)
+        => _courseDal.Update(model, id);
+     //   public void Repository()
+     //=> _courseDal.Repository(_context);
+
+     //   public IEnumerable<Course> Repository(KusysDemoContext ctx)
+     //   => _courseDal.Repository(_context);
     }
 }

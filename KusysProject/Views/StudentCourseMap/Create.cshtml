@@ -11,7 +11,7 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparentm">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
                     <h3 class="text-white text-primary mb-0">
-                        <i class="fa-solid fa-graduation-cap"></i>
+                      <i class="fa-solid fa-circle-plus"></i>
                         Student Course Assignment
                     </h3>
                 </div>
@@ -27,18 +27,20 @@
                                             <div class="col-md-12">
                                                 <div class="input-group input-group-outline my-3">
 
-                                                  @*  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                                    <select class="form-select form-select-lg mb-3" asp-for="CourseId" aria-label=".form-select-lg example">
                                                         <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>*@
-
-                                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                        <option selected>Open this select menu</option>
-                                                        @foreach (var course in Model.CourseId)
+                                                        @foreach (var course in Model.CourseName)
                                                         {
-                                                            <option value="1">@course</option>
+                                                            <option value="@course.Id">@course.CourseName</option>
+                                                        }
+                                                    </select>
+
+
+                                                    <select class="form-select form-select-lg mb-3" asp-for="Id" aria-label=".form-select-lg example">
+                                                        <option selected>Open this select menu</option>
+                                                        @foreach (var student in Model.StudentName)
+                                                        {
+                                                            <option value="@student.Id">@student.FirstName @student.LastName</option>
                                                         }
                                                     </select>
 

@@ -17,5 +17,10 @@ namespace KUSYSDemo.Models
         [Display(Name = "Birth Date")]
         [Required(ErrorMessage = "{0} the field should not be left empty!")]
         public DateTime BirthDate { get; set; }
+
+
+        public int CourseId { get; set; }
+        public string CourseName { get; set; }
+
     }
 }

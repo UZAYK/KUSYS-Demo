@@ -11,9 +11,10 @@ namespace KUSYSDemo.Controllers
         #region CTOR - DEPENDENCY INJECTION
 
         private readonly IStudentService _studentService;
+        private readonly ICourseService _courseService;
         private readonly IMapper _mapper;
 
-        public StudentController(IStudentService studentService, IMapper mapper)
+        public StudentController(IStudentService studentService, ICourseService _courseService, IMapper mapper)
         {
             _studentService = studentService;
             _mapper = mapper;
@@ -43,8 +44,17 @@ namespace KUSYSDemo.Controllers
                 });
                 return RedirectToAction("Index");
             }
-            return View(model);
+            //info 
+            return View("Index");
         }
 
+        //#region Delete
+        //public IActionResult Delete(int? id)
+        //{
+        //    var sonuc = _levelServices.Delete<Level>(id);
+        //    Toast("Deletion successful", Core.Concrete.Toastr.ToastrType.Success);
+        //    return View("List");
+        //}
+        //#endregion
     }
 }

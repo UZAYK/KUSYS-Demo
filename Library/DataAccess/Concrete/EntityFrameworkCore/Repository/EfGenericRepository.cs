@@ -1,4 +1,5 @@
-﻿using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
+﻿using AutoMapper;
+using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 using KUSYSDemo.DataAccess.Interfaces;
 using KUSYSDemo.Entities.Interfaces;
 using System.Linq.Expressions;
@@ -9,9 +10,12 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
     {
         #region constructor transactions (dependency incjection)
         private readonly KusysDemoContext _context;
-        public EfGenericRepository(KusysDemoContext context)
+        private readonly IMapper _mapper;
+
+        public EfGenericRepository(KusysDemoContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         #endregion
 
@@ -35,9 +39,22 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
             _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }
+
+        //public IEnumerable<T> Repository(KusysDemoContext ctx)
+        //{
+        //    var context = ctx;
+        //    return context.Set<T>();
+        //}
+
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
+            _context.SaveChanges();
+        }
+        public void Update(dynamic model, dynamic id)
+        {
+            var map = _mapper.Map(model, id);
+            _context.Set<T>().Update(map);
             _context.SaveChanges();
         }
     }

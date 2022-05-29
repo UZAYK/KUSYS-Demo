@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 using KUSYSDemo.Entities.Interfaces;
 
 namespace KUSYSDemo.Business.Interfaces
@@ -11,6 +12,8 @@ namespace KUSYSDemo.Business.Interfaces
         void Add(T entity);
         void Remove(T entity);
         void Update(T entity);
+        void Update(dynamic model, dynamic id);
+        //IEnumerable<T> Repository(KusysDemoContext ctx);
 
     }
 }

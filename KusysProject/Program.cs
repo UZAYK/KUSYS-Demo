@@ -5,7 +5,7 @@ using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddContainerWithDependencies();
 builder.Services.AddDbContext<KusysDemoContext>();
