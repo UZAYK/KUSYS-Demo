@@ -10,6 +10,7 @@ namespace KUSYSDemo.DataAccess.Interfaces
         IEnumerable<Student> GetStudentAll();
         IEnumerable<Course> GetCourseAll();
         IEnumerable<StudentModel> GetMapAll();
+        StudentModel GetByMap(int id);
         StudentCourseMapListModel GetStudentAndCourseMap();
         Boolean CourseValidation(int id, int courseId);
 

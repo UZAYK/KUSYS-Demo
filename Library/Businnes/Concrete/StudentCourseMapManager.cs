@@ -63,5 +63,8 @@ namespace KUSYSDemo.Business.Concrete
 
         public bool CourseValidation(int id, int courseId)
         => _studentCourseMapDal.CourseValidation(id, courseId);
+
+        public StudentModel GetByMap(int id)
+        => _studentCourseMapDal.GetByMap(id);
     }
 }

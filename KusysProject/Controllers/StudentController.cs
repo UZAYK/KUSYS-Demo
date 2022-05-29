@@ -21,7 +21,7 @@ namespace KUSYSDemo.Controllers
         }
         #endregion
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View(_mapper.Map<List<StudentModel>>(_studentService.GetAll()));
         }
@@ -47,14 +47,5 @@ namespace KUSYSDemo.Controllers
             //info 
             return View("Index");
         }
-
-        //#region Delete
-        //public IActionResult Delete(int? id)
-        //{
-        //    var sonuc = _levelServices.Delete<Level>(id);
-        //    Toast("Deletion successful", Core.Concrete.Toastr.ToastrType.Success);
-        //    return View("List");
-        //}
-        //#endregion
     }
 }

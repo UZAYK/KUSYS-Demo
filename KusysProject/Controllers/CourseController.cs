@@ -56,24 +56,17 @@ namespace KUSYSDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-                _courseService.Update(new Course
-                {
-                    Id = model.Id,
-                    CourseName = model.CourseName,
-                    CourseId = model.CourseId
-                });
+                _courseService.Update(_mapper.Map(model, _courseService.GetById(model.Id)));
                 return RedirectToAction("Index");
             }
             return View(model);
         }
 
-        //#region Delete
-        //public IActionResult Delete(int? id)
-        //{
-        //    var sonuc = _levelServices.Delete<Level>(id);
-        //    Toast("Deletion successful", Core.Concrete.Toastr.ToastrType.Success);
-        //    return View("List");
-        //}
-        //#endregion
+        public IActionResult Delete(int id)
+        {
+            _courseService.Remove(_courseService.GetById(id));
+            //Toast("Deletion successful", Core.Concrete.Toastr.ToastrType.Success);
+            return RedirectToAction("Index");
+        }
     }
 }

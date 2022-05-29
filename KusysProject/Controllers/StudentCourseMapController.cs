@@ -27,6 +27,11 @@ namespace KUSYSDemo.Controllers
             return View(_studentCourseMapService.GetMapAll());
         }
 
+        public ActionResult GetMap(int id)
+        {
+            return Json(_studentCourseMapService.GetByMap(id));
+        }
+
         public IActionResult Create()
         {
             return View(_studentCourseMapService.GetStudentAndCourseMap());
@@ -43,10 +48,19 @@ namespace KUSYSDemo.Controllers
 
                     return RedirectToAction("Index");
                 }
-
-
             }
-            return View(model);
+            else
+            {
+                //zaten bir kayıt var
+            }
+            return View();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _studentCourseMapService.Remove(_studentCourseMapService.GetById(id));
+            //Toast("Deletion successful", Core.Concrete.Toastr.ToastrType.Success);
+            return RedirectToAction("Index");
         }
 
     }

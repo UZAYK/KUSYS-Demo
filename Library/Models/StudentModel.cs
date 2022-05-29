@@ -6,6 +6,10 @@ namespace KUSYSDemo.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "{0} the field should not be left empty!")]
+        [Display(Name = "Name")]  
+        
+        public int StudentId { get; set; }
+        [Required(ErrorMessage = "{0} the field should not be left empty!")]
         [Display(Name = "Name")] 
 
         public string? FirstName { get; set; }
