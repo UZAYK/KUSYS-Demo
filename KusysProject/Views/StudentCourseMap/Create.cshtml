@@ -1,6 +1,7 @@
 ﻿@model KUSYSDemo.Models.StudentCourseMap.StudentCourseMapListModel
 @{
     ViewData["Title"] = "Student Course Assignment";
+    var result = TempData["result"].ToString();
 }
 
 <div class="container mt-5">
@@ -11,7 +12,7 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparentm">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
                     <h3 class="text-white text-primary mb-0">
-                      <i class="fa-solid fa-circle-plus"></i>
+                        <i class="fa-solid fa-circle-plus"></i>
                         Student Course Assignment
                     </h3>
                 </div>
@@ -47,11 +48,17 @@
                                                 </div>
                                             </div>
                                             <div class="form-group d-flex justify-content-end mt-3">
-                                                <input type="submit" value="Create" class="btn btn-primary float-right" />
+                                                <input type="submit" value="Create" class="btn btn-success float-right" />
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+                                @if (result != null)
+                                {
+                                    <div class="alert alert-@(result.Contains("Successful") == true ? "success" : "danger") text-white font-weight-bold" role="alert">
+                                        @result
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

@@ -74,14 +74,15 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
             };
             return model;
         }
+
         public bool CourseValidation(int id, int courseId)
         {
-            var item = _context.StudentCourseMaps.Where(s => s.StudentId == id && s.CourseId != 0 && s.CourseId != courseId).FirstOrDefault();
-            if (item != null)
+            var item = _context.StudentCourseMaps.Where(s => s.StudentId == id && s.CourseId != 0 && s.CourseId == courseId).FirstOrDefault();
+            if (item == null)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

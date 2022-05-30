@@ -34,18 +34,9 @@ namespace KUSYSDemo.Controllers
         [HttpPost]
         public IActionResult Create(StudentModel model)
         {
-            if (ModelState.IsValid)
-            {
-                _studentService.Add(new Student
-                {
-                    BirthDate = model.BirthDate,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                });
-                return RedirectToAction("Index");
-            }
-            //info 
-            return View("Index");
+            var models = _mapper.Map<Student>(model);
+            _studentService.Add(models);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -42,18 +42,20 @@ namespace KUSYSDemo.Controllers
         {
             if (ModelState.IsValid)
             {
+               
                 if (_studentCourseMapService.CourseValidation(model.StudentId, model.CourseId))
                 {
                     _studentCourseMapService.Add(model);
+                    TempData["result"] = "Registration Successful!";
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Create");
+                }
+                else
+                {
+                    TempData["result"] = "This student has already taken this course!";
                 }
             }
-            else
-            {
-                //zaten bir kayıt var
-            }
-            return View();
+            return RedirectToAction("Create");
         }
 
         public IActionResult Delete(int id)
