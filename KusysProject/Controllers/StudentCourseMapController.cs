@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using KUSYSDemo.Business.Interfaces;
-using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
+﻿using Microsoft.AspNetCore.Mvc;
+
 using KUSYSDemo.Entities.Concrete;
-using KUSYSDemo.Models;
-using KUSYSDemo.Models.StudentCourseMap;
-using Microsoft.AspNetCore.Mvc;
+using KUSYSDemo.Business.Interfaces;
 
 namespace KUSYSDemo.Controllers
 {
@@ -42,7 +39,7 @@ namespace KUSYSDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-               
+                // Checking whether a student is enrolled in the same course is done here.
                 if (_studentCourseMapService.CourseValidation(model.StudentId, model.CourseId))
                 {
                     _studentCourseMapService.Add(model);
@@ -52,6 +49,7 @@ namespace KUSYSDemo.Controllers
                 }
                 else
                 {
+                    // View status message is returned according to status.
                     TempData["result"] = "This student has already taken this course!";
                 }
             }
@@ -61,7 +59,6 @@ namespace KUSYSDemo.Controllers
         public IActionResult Delete(int id)
         {
             _studentCourseMapService.Remove(_studentCourseMapService.GetById(id));
-            //Toast("Deletion successful", Core.Concrete.Toastr.ToastrType.Success);
             return RedirectToAction("Index");
         }
 

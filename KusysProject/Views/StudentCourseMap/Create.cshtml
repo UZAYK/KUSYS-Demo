@@ -1,7 +1,10 @@
 ﻿@model KUSYSDemo.Models.StudentCourseMap.StudentCourseMapListModel
 @{
     ViewData["Title"] = "Student Course Assignment";
-    var result = TempData["result"].ToString();
+
+    // The status message carried with TempData has been transferred to the variable so that it is aimed to 
+    //work more stable in decision mechanisms.
+    var result = TempData["result"]?.ToString();
 }
 
 <div class="container mt-5">
@@ -28,6 +31,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group input-group-outline my-3">
 
+                                                    @* Lists course names *@
                                                     <select class="form-select form-select-lg mb-3" asp-for="CourseId" aria-label=".form-select-lg example">
                                                         <option selected>Open this select menu</option>
                                                         @foreach (var course in Model.CourseName)
@@ -36,7 +40,7 @@
                                                         }
                                                     </select>
 
-
+                                                    @* Lists student names *@
                                                     <select class="form-select form-select-lg mb-3" asp-for="StudentId" aria-label=".form-select-lg example">
                                                         <option selected>Open this select menu</option>
                                                         @foreach (var student in Model.StudentName)
@@ -55,6 +59,7 @@
                                 </div>
                                 @if (result != null)
                                 {
+                                    // The word "successful" is searched in the returned status, if it is gold it will be colored green, otherwise it will be colored red.
                                     <div class="alert alert-@(result.Contains("Successful") == true ? "success" : "danger") text-white font-weight-bold" role="alert">
                                         @result
                                     </div>

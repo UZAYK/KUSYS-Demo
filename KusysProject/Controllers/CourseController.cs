@@ -65,7 +65,6 @@ namespace KUSYSDemo.Controllers
         public IActionResult Delete(int id)
         {
             _courseService.Remove(_courseService.GetById(id));
-            //Toast("Deletion successful", Core.Concrete.Toastr.ToastrType.Success);
             return RedirectToAction("Index");
         }
     }

@@ -13,7 +13,5 @@ namespace KUSYSDemo.DataAccess.Interfaces
         StudentModel GetByMap(int id);
         StudentCourseMapListModel GetStudentAndCourseMap();
         Boolean CourseValidation(int id, int courseId);
-
-        //bool CourseValidation(Expression<Func<StudentCourseMap, bool>> expression);
     }
 }

@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using KUSYSDemo.Business.Interfaces;
-using KUSYSDemo.Entities.Concrete;
-using KUSYSDemo.Models;
 using Microsoft.AspNetCore.Mvc;
+
+using KUSYSDemo.Models;
+using KUSYSDemo.Entities.Concrete;
+using KUSYSDemo.Business.Interfaces;
 
 namespace KUSYSDemo.Controllers
 {

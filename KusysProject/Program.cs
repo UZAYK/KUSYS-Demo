@@ -6,16 +6,22 @@ using KUSYSDemo.Business.DiContainer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews().AddFluentValidation();
+
+// Services Container.
 builder.Services.AddContainerWithDependencies();
 
+// DB Context.
 builder.Services.AddDbContext<KusysDemoContext>();
+
+// AutoMapper.
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
+// Fluent Validation - custom validators.
 builder.Services.AddValidator();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

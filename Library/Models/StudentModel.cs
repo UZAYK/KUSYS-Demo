@@ -6,11 +6,11 @@ namespace KUSYSDemo.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "{0} the field should not be left empty!")]
-        [Display(Name = "Name")]  
-        
+        [Display(Name = "Name")]
+
         public int StudentId { get; set; }
         [Required(ErrorMessage = "{0} the field should not be left empty!")]
-        [Display(Name = "Name")] 
+        [Display(Name = "Name")]
 
         public string? FirstName { get; set; }
 
@@ -21,8 +21,9 @@ namespace KUSYSDemo.Models
         [Display(Name = "Birth Date")]
         [Required(ErrorMessage = "{0} the field should not be left empty!")]
         public DateTime BirthDate { get; set; }
+        public string BirthDateTime { get; set; }
 
-
+        public IList<CourseModel> Details { get; set; }
         public int CourseId { get; set; }
         public string CourseName { get; set; }
 

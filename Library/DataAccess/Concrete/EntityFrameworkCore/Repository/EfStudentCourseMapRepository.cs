@@ -45,21 +45,26 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
 
         public StudentModel GetByMap(int id)
         {
-            var query = from map in _context.StudentCourseMaps.Where(x => x.StudentId == id)
-                        join course in GetCourseAll() on map.CourseId equals course.Id
-                        join student in GetStudentAll() on map.StudentId equals student.Id
-                        select new StudentModel
-                        {
-                            CourseName = course.CourseName,
-                            BirthDate = student.BirthDate,
-                            FirstName = student.FirstName,
-                            LastName = student.LastName,
-                            CourseId = course.Id,
-                            Id = map.Id,
-                            StudentId = student.Id
-                        };
-            var model = _mapper.Map<StudentModel>(query);
-            return model;
+        
+            var map = _context.StudentCourseMaps.Where(m => m.StudentId == id).ToList();
+            var coursesId=map.Select(s=>s.CourseId).ToList();
+            var student = _context.Students.FirstOrDefault(m => m.Id == id);
+            var coures = _context.Courses.Where(m => coursesId.Any(c => c == m.Id)).Select(s => new CourseModel
+            {
+                Id = s.Id,
+                CourseId = s.CourseId,
+                CourseName = s.CourseName
+            }).ToList();
+
+            return new StudentModel
+            {
+                Details = coures,
+                Id = id,
+                BirthDateTime = student.BirthDate.ToShortDateString(),
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                StudentId = student.Id,
+            };
         }
 
         public StudentCourseMapListModel GetStudentAndCourseMap()

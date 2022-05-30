@@ -15,6 +15,5 @@ namespace KUSYSDemo.DataAccess.Interfaces
         void Remove(T entity);
         void Update(T entity);
         void Update(dynamic entity, dynamic id);
-        //IEnumerable<T> Repository(KusysDemoContext ctx);
     }
 }

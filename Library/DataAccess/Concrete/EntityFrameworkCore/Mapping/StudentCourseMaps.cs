@@ -8,7 +8,10 @@ namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Mapping
     {
         public void Configure(EntityTypeBuilder<StudentCourseMap> builder)
         {
+            /// Gives properties primary Key
             builder.HasKey(I => I.Id);
+
+            /// It ensures that the relevant field is of an ascending type, that is, identity.
             builder.Property(I => I.Id).UseIdentityColumn();
         }
     }

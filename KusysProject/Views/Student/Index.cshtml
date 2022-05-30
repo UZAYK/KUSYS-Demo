@@ -33,7 +33,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model.OrderByDescending(x=>x.Id))
+                                        @foreach (var item in Model.OrderByDescending(x => x.Id))
                                         {
                                             <tr>
                                                 <td scope="row">@item.FirstName</td>
@@ -41,7 +41,7 @@
 
                                                 <td>
                                                     <!-- Button to Open the Modal -->
-                                                <button type="button" onclick="personelInfo('@item.Id')" class="btn btn-warning btn-md" data-toggle="modal" data-target="#myModal">
+                                                <button type="button" onclick="personelInfo('@item.Id')" class="btn btn-warning btn-md" data-toggle="modal" data-target="#studentModel">
                                                         <i class="fa-solid fa-eye"></i> See Details
                                                     </button>
                                                 </td>
@@ -59,7 +59,7 @@
 </div>
 
 <!-- The Modal -->
-<div class="modal fade bd-example-modal-xl" id="myModal">
+<div class="modal fade bd-example-modal-xl" id="studentModel">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -78,10 +78,10 @@
                             <div class="collapse multi-collapse" id="multiCollapseExample1">
                                 <div class="card card-body">
                                     <label>Name Surname</label>
-                                    <input id="Name" disabled/>
-                                    
+                                    <input id="Name" disabled />
+
                                     <label mt-1>Date of Birth</label>
-                                    <input id="Name" disabled/>
+                                    <input id="DateOfBirth" disabled />
                                 </div>
                             </div>
                         </div>
@@ -89,22 +89,15 @@
                             <div class="collapse multi-collapse" id="multiCollapseExample2">
                                 <div class="card card-body">
                                     <table id="userListTable" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Course Code</th>
-                                            <th>Course Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
+                                        <thead>
                                             <tr>
-                                                <td scope="row">@item.FirstName</td>
-                                                <td scope="row">@item.LastName</td>
+                                                <th>Course Code</th>
+                                                <th>Course Name</th>
                                             </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody id="courseList">
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -125,15 +118,16 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script>
-           $(document).ready(function () {
-            $('#userListTable').DataTable();
-
-           $("#myBtn").click(function(){
-           $("#myModal").modal();
-            });
-          });
+    $(document).ready(function () {
+        $('#userListTable').DataTable();
+        
+        @* The code that opens the student's detail modal *@
+        $("#studentModel").modal();
+    });
 
     function personelInfo(id) {
+
+        @* We draw all the necessary information about the user here and fill them in the relevant fields. *@
         if (id != "") {
             $.ajax({
                 url: "@Url.Action("GetMap", "StudentCourseMap")",
@@ -142,9 +136,32 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                   console.log(response)
+
+                   $('#courseList tr').remove();
+                   $("#Name").val(response.firstName + " " + response.lastName)
+                   $("#DateOfBirth").val(response.birthDateTime)
+
+                   if(response.details.lenght != 0)
+                   {
+                     buildCourseList(response.details);
+                   }
                 }
             });
+        }
+    }
+
+    @* The process of bringing the incoming sequence (student's courses) to the table rows *@
+    function buildCourseList(data) {
+        $('#courseList li').remove();
+        var courseList = document.getElementById('courseList')
+        debugger;
+        for (var i = 0; i <= data.length; i++) {
+                 var row = `<tr>` +
+                 `<td><div class="">${data[i].courseName == null ? "-" : data[i].courseName}</div></td>` +
+                 `<td><div class="">${data[i].courseId == null ? "-" : data[i].courseId}</div></td>` +
+                 `</tr>`;
+           courseList.innerHTML += row
+           console.log(row)
         }
     }
 </script>
