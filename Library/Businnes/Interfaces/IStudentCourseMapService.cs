@@ -1,5 +1,5 @@
-﻿using KUSYSDemo.Entities.Concrete;
-using KUSYSDemo.Models;
+﻿using KUSYSDemo.Models;
+using KUSYSDemo.Entities.Concrete;
 using KUSYSDemo.Models.StudentCourseMap;
 
 namespace KUSYSDemo.Business.Interfaces
@@ -13,6 +13,5 @@ namespace KUSYSDemo.Business.Interfaces
         StudentCourseMapListModel GetStudentAndCourseMap();
         Boolean CourseValidation(int id, int courseId);
 
-        //bool CourseValidation(int studentId, string courseId);
     }
 }

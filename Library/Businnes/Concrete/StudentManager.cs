@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
 
-using KUSYSDemo.Business.Interfaces;
-using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
-using KUSYSDemo.DataAccess.Interfaces;
 using KUSYSDemo.Entities.Concrete;
+using KUSYSDemo.Business.Interfaces;
+using KUSYSDemo.DataAccess.Interfaces;
+using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 
 namespace KUSYSDemo.Business.Concrete
 {

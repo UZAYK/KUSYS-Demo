@@ -6,9 +6,5 @@ namespace KUSYSDemo.Entities.Concrete
     {
         public string CourseId { get; set; }
         public string CourseName { get; set; }
-
-        //public Student Student { get; set; }
-        //public int StudentId { get; set; }
-
     }
 }

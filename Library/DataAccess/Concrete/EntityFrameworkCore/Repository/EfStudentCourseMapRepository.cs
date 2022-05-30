@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 using KUSYSDemo.DataAccess.Interfaces;
-using KUSYSDemo.Entities.Concrete;
 using KUSYSDemo.Models;
+using KUSYSDemo.Entities.Concrete;
 using KUSYSDemo.Models.StudentCourseMap;
-using System.Linq.Expressions;
 
 namespace KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Repository
 {

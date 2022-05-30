@@ -1,10 +1,11 @@
-﻿using KUSYSDemo.Business.Interfaces;
-using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
-using KUSYSDemo.DataAccess.Interfaces;
-using KUSYSDemo.Entities.Concrete;
+﻿using System.Linq.Expressions;
+
 using KUSYSDemo.Models;
+using KUSYSDemo.Entities.Concrete;
+using KUSYSDemo.Business.Interfaces;
+using KUSYSDemo.DataAccess.Interfaces;
 using KUSYSDemo.Models.StudentCourseMap;
-using System.Linq.Expressions;
+using KUSYSDemo.DataAccess.Concrete.EntityFrameworkCore.Context;
 
 namespace KUSYSDemo.Business.Concrete
 {
@@ -24,9 +25,6 @@ namespace KUSYSDemo.Business.Concrete
 
         public void Add(StudentCourseMap entity)
         => _studentCourseMapDal.Add(entity);
-
-        //public void Add(StudentCourseMapAddModel entity, dynamic id)
-        //=> _studentCourseMapDal.Add(entity, id);
 
         public void Add(StudentCourseMap entity, dynamic model)
         => _studentCourseMapDal.Add(entity, model);
