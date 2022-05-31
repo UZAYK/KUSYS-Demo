@@ -1,52 +1,35 @@
 ﻿<footer class="footer py-5">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mb-4 mx-auto text-center">
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Company
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            About Us
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Team
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Products
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Blog
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Pricing
-          </a>
+        <div class="row">
+            <div class="col-lg-8 mb-4 mx-auto text-center">
+                <a asp-action="Index" asp-controller="Student" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    Student
+                </a>
+                <a asp-action="Index" asp-controller="Course" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    Course
+                </a>
+
+                <a asp-action="Index" asp-controller="StudentCourseMap" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                    Course & Student
+                </a>
+            </div>
+            <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
+                <a href="https://github.com/UZAYK" target="_blank" class="text-secondary me-xl-4 me-4">
+                    <i class="fab fa-github text-lg opacity-8"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/uzay-kahraman-834019198/" target="_blank" class="text-secondary me-xl-4 me-4">
+                    <i class="fab fa-linkedin text-lg opacity-8"></i>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-dribbble" aria-hidden="true"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-twitter" aria-hidden="true"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-instagram" aria-hidden="true"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-pinterest" aria-hidden="true"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-github" aria-hidden="true"></span>
-          </a>
+        <div class="row">
+            <div class="col-8 mx-auto text-center mt-1">
+                <p class="mb-0 text-secondary">
+                    All rights reserved. Copyright © <script>document.write(new Date().getFullYear())</script>
+                    <strong>KUSYS DEMO</strong> by <a class="text-danger" href="https://www.creative-tim.com" target="_blank">
+                        <strong>Uzay KAHRAMAN</strong>
+                </p>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-8 mx-auto text-center mt-1">
-          <p class="mb-0 text-secondary">
-            Copyright © <script>
-              document.write(new Date().getFullYear())
-            </script>2022 Material by Creative Tim.
-          </p>
-        </div>
-      </div>
     </div>
-  </footer>
+</footer>
