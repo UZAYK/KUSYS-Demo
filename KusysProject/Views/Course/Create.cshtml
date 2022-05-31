@@ -25,15 +25,23 @@
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="input-group input-group-outline my-3">
+                                                <div class="row">
 
-                                                    <label asp-for="CourseId"></label>
-                                                    <input asp-for="CourseId" class="form-control" />
-                                                    <span asp-validation-for="CourseId"></span>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group input-group-outline my-3">
+                                                            <label asp-for="CourseId" class="form-label"></label>
+                                                            <input asp-for="CourseId" class="form-control" />
+                                                            <span asp-validation-for="CourseId" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
 
-                                                    <label asp-for="CourseName"></label>
-                                                    <input asp-for="CourseName" class="form-control" />
-                                                    <span asp-validation-for="CourseName"></span>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group input-group-outline my-3">
+                                                            <label asp-for="CourseName" class="form-label"></label>
+                                                            <input asp-for="CourseName" class="form-control" />
+                                                            <span asp-validation-for="CourseName" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                             </div>
